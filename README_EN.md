@@ -13,7 +13,7 @@ HJMirror is an Java and Droid project to help users mirror their Droid Device to
 
 ## How to build this project?
 
-1. Pull project sources from branch like 2.0.0.
+1. Pull project sources from branch like 2.0.1.
 
 2. Please make sure you have already installed JDK, Android SDK and Android Studio.
 
@@ -30,7 +30,7 @@ HJMirror is an Java and Droid project to help users mirror their Droid Device to
 8. Operate this JavaApp by following the infomation on it.
 
 
-## What's news on v2.0.0
+## What's news on v2.0.x
 
 1. Auto fetch and setup the adb tools from Google.
 
