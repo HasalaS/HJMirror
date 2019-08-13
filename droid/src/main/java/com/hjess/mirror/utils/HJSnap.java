@@ -2,7 +2,9 @@ package com.hjess.mirror.utils;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
+import android.graphics.Rect;
 import android.os.Build;
+import android.view.Surface;
 
 import java.lang.reflect.Method;
 
@@ -30,9 +32,18 @@ public class HJSnap {
             surfaceClassName = "android.view.SurfaceControl";
         }
         try {
-            Class[] paramTypes = new Class[]{Integer.TYPE, Integer.TYPE};
-            method = Class.forName(surfaceClassName)
-                    .getDeclaredMethod("screenshot", paramTypes);
+            if (Build.VERSION.SDK_INT >= 28) {
+                // Android 9.0方法变更，https://github.com/wejoy/HJMirror/issues/4
+                Class[] paramTypes = new Class[]{Rect.class, Integer.TYPE, Integer.TYPE, Integer.TYPE};
+                method = Class.forName(surfaceClassName)
+                            .getDeclaredMethod("screenshot", paramTypes);
+
+            } else {
+                // Android 9.0以前
+                Class[] paramTypes = new Class[]{Integer.TYPE, Integer.TYPE};
+                method = Class.forName(surfaceClassName)
+                        .getDeclaredMethod("screenshot", paramTypes);
+            }
         } catch (Exception e) {
             // 打印异常
             HJLog.e(e);
@@ -45,10 +56,19 @@ public class HJSnap {
      * @param height 高度
      */
     public void setSize(int width, int height) {
-        if (width != 0 && height != 0 && this.width != width && this.height != height) {
-            size = new Object[]{width, height};
-            this.width = width;
-            this.height = height;
+        if (Build.VERSION.SDK_INT >= 28) {
+            // Android 9.0方法变更，https://github.com/wejoy/HJMirror/issues/4
+            if (width != 0 && height != 0 && this.width != width && this.height != height) {
+                size = new Object[]{new Rect(), width, height, Surface.ROTATION_0};
+                this.width = width;
+                this.height = height;
+            }
+        } else {
+            if (width != 0 && height != 0 && this.width != width && this.height != height) {
+                size = new Object[]{width, height};
+                this.width = width;
+                this.height = height;
+            }
         }
     }
 

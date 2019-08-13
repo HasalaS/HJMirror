@@ -26,7 +26,9 @@ public class HJInput {
                 mInputManager = (InputManager) InputManager.class.getDeclaredMethod("getInstance").invoke(null);
                 mInjectInputEventMethod = InputManager.class.getMethod("injectInputEvent", InputEvent.class, Integer.TYPE);
             }
-        } catch (Exception ignore) {}
+        } catch (Exception e) {
+            HJLog.e(e);
+        }
     }
 
     public boolean sendTouchEvent(int action, float x, float y) {
