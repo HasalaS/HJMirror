@@ -42,8 +42,8 @@ HJMirror是一个用于将手机投屏至PC的Java项目，所以在使用前请
 
 ## 下一步计划
 
-目前该项目Java版除BUG修正外暂缓更新
-正在开发一个基于Go和OpenGL的轻量级GUI框架
-github.com/wejoy/gui 【2019/9 进度约30%】
-框架目前为私有库，预计会在2020年初公布
-HJMirror将会作为第一个项目使用该框架重写
+目前该项目Java版除BUG修正外暂缓更新  
+正在开发一个基于Go和OpenGL的轻量级GUI框架  
+github.com/wejoy/gui 【 2019/9 进度约30% 】  
+框架目前为私有库，预计会在2020年初公布  
+HJMirror将会作为第一个项目使用该框架重写  
